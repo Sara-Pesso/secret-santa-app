@@ -4,21 +4,21 @@
 from math import *
 import random
 
-exclusions = {'Gene':['Kristen', 'Liam', 'Phineas', 'Tristan'],
-'Tristan':['Tessa','Kristen','Carolyn'],
-'Perrin':['Beth','Phineas','Gene'],
-'Cullen':['Sara','Carolyn','Phineas'],
-'Liam':['Carolyn','Perrin'],
-'Owen':['Juliana','Tessa','Kristen'],
-'Phineas':['Juliana','Theodora'],
-'Theodora':['Owen','Juliana'],
-'Josiah':['Cullen','Owen'],
-'Kristen': ['Gene','Sara'], 
-'Tessa': ['Tristan','Gene'], 
-'Beth': ['Perrin','Tristan','Cullen'], 
-'Sara': ['Cullen','Theodora','Liam'], 
-'Carolyn': ['Liam','Beth'], 
-'Juliana': ['Owen','Josiah']}
+exclusions = {'Gene':['Kristen'],
+'Tristan':['Tessa'],
+'Perrin':['Beth'],
+'Cullen':['Sara'],
+'Liam':['Carolyn'],
+'Owen':['Juliana'],
+'Phineas':[],
+'Theodora':[],
+'Josiah':[],
+'Kristen': ['Gene'], 
+'Tessa': ['Tristan'], 
+'Beth': ['Perrin'], 
+'Sara': ['Cullen'], 
+'Carolyn': ['Liam'], 
+'Juliana': ['Owen']}
 
 
 def secret_santa_generator(exclusions):

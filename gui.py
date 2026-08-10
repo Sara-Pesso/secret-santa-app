@@ -87,11 +87,25 @@ display_button.pack(pady=10)
 exclusions_textbox = scrolledtext.ScrolledText(root, wrap=tk.WORD, state="disabled", height=10, padx=5, pady=5)
 exclusions_textbox.pack(pady=10, fill=tk.BOTH, expand=True)
 
-exclusions_name1_box = tk.Entry(root, width=30)
-exclusions_name1_box.pack(pady=10)
+row_frame = tk.Frame(root)
+row_frame.pack(fill="x", padx=10, pady=10)
 
-exclusions_name2_box = tk.Entry(root, width=30)
-exclusions_name2_box.pack(pady=10)
+gift_giver_label = tk.Label(row_frame, text="Gift Giver Name:")
+gift_giver_label.pack(side="left", padx=(0, 10))
+
+exclusions_name1_box = tk.Entry(row_frame, width=30)
+exclusions_name1_box.pack(side="left", fill="x")
+
+###
+
+row_frame2 = tk.Frame(root)
+row_frame2.pack(fill="x", padx=10, pady=10)
+
+exclusions_label = tk.Label(row_frame2, text="Gift Giver Name:")
+exclusions_label.pack(side="left", padx=(0, 10))
+
+exclusions_name2_box = tk.Entry(row_frame2, width=30)
+exclusions_name2_box.pack(side="left", fill="x")
 
 display_button = tk.Button(root, text="Display/Add Exclusions", command=lambda: display_exclusions_dict(exclusions_textbox))
 display_button.pack(pady=10)

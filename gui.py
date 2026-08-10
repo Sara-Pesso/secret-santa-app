@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import scrolledtext 
 from secret_santa import *
 
+exclusions = flip_dict_entries(spouses)
+names = [key for key, _ in exclusions.items()]
 
 def secret_santa_outputs(output_widget):
     # Generate the list of items
@@ -20,11 +22,15 @@ def secret_santa_outputs(output_widget):
 
 def display_spouse_dict(spouses_list_widget):
     # Check for new spouse pairs!!!!
-    spouse1 = spouse_name1_box.get()
-    spouse2 = spouse_name2_box.get()
+    gift_giver = spouse_name1_box.get()
+    ex = spouse_name2_box.get()
 
-    if spouse1 and spouse2:
-        spouses.update({spouse1:spouse2})
+    if gift_giver and ex:
+        # String scrubbing
+        ex = ex.replace(" ","") #remove spaces
+        ex = ex.split(",")
+
+        exclusions.update({gift_giver:ex})
         # Empty the textboxes
         spouse_name1_box.delete(0, tk.END)
         spouse_name2_box.delete(0, tk.END)
@@ -33,8 +39,8 @@ def display_spouse_dict(spouses_list_widget):
     spouses_list_widget.config(state="normal") # Make the widget editable temporarily
     spouses_list_widget.delete('1.0', tk.END) 
     
-    for key, value in spouses.items():
-        spouses_list_widget.insert(tk.END, f"{key},{value}" + "\n")
+    for key, value in exclusions.items():
+        spouses_list_widget.insert(tk.END, f"{key}:{value}" + "\n")
 
     # Make the widget read-only again to prevent user editing
     spouses_list_widget.config(state="disabled")
@@ -77,7 +83,7 @@ add_name_box.pack(pady=10)
 display_button = tk.Button(root, text="Display/Add Names", command=lambda: display_all_names(names_textbox))
 display_button.pack(pady=10)
 
-### Displaying the names and spouse pairinings
+### Displaying the names and spouse pairings
 spouse_textbox = scrolledtext.ScrolledText(root, wrap=tk.WORD, state="disabled", height=10, padx=5, pady=5)
 spouse_textbox.pack(pady=10, fill=tk.BOTH, expand=True)
 
@@ -87,11 +93,11 @@ spouse_name1_box.pack(pady=10)
 spouse_name2_box = tk.Entry(root, width=30)
 spouse_name2_box.pack(pady=10)
 
-display_button = tk.Button(root, text="Display/Add Spouses", command=lambda: display_spouse_dict(spouse_textbox))
+display_button = tk.Button(root, text="Display/Add Exclusions", command=lambda: display_spouse_dict(spouse_textbox))
 display_button.pack(pady=10)
 
 ### OUTPUT!
-# Create a Button that triggers the secret santa generator function function
+# Create a Button that triggers the secret santa generator function
 display_button = tk.Button(root, text="DRAW NAMES!", command=lambda: secret_santa_outputs(output_area))
 display_button.pack(pady=10)
 

@@ -4,27 +4,29 @@
 from math import *
 import random
 
-names =['Gene','Kristen','Tristan','Tessa','Perrin','Beth','Cullen','Sara','Liam','Carolyn',
-'Owen','Juliana','Phineas','Theodora','Josiah']
-
-spouses = {'Gene':'Kristen',
-'Tristan':'Tessa',
-'Perrin':'Beth',
-'Cullen':'Sara',
-'Liam':'Carolyn',
-'Owen':'Juliana'}
+spouses = {'Gene':['Kristen'],
+'Tristan':['Tessa'],
+'Perrin':['Beth'],
+'Cullen':['Sara'],
+'Liam':['Carolyn'],
+'Owen':['Juliana'],
+'Phineas':[],
+'Theodora':[],
+'Josiah':[]}
 
 def flip_dict_entries(dict):
-    flipped_dict = {value: key for key, value in dict.items()}
+    flipped_dict = {value[0]: [key] for key, value in dict.items() if value != []}
     merged_dict = dict | flipped_dict
     return merged_dict
 
-
-def secret_santa_generator(names, spouses):
-    spouses = flip_dict_entries(spouses)
+###
+def secret_santa_generator(spouses):
+    exclusions = flip_dict_entries(spouses)
+    names = [key for key, _ in exclusions.items()]
 
     n = len(names)
     tries = 0
+
     while True:
         random_order = random.sample(range(0,n), n)
         pairings = {names[i]: names[random_order[i]] for i in range(0, n)}
@@ -40,4 +42,4 @@ def secret_santa_generator(names, spouses):
                 pairings_str.append(f"{key} DREW {value}")
             return pairings_str
 
-# print(secret_santa_generator(names, spouses))
+# print(secret_santa_generator(spouses))

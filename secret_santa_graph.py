@@ -35,7 +35,9 @@ for key, values in exclusions.items():
         excluded = index_name[val]
         adj_edges[giver][excluded] = 0
 
-## Check if graph is Hamiltonian using Depth First Search (Backtracking Method)
+print(name_index)
+
+## 1) Check if graph is Hamiltonian using Depth First Search (Backtracking Method)
 ## NOTE: If we know the graph is Hamiltonian (i.e., no exclusions at all), we have the Traveling
 ## Salesman Problem (TSP). If this is the case, DFS isn't necessary (as it is O(n!) and very slow) and
 ## a faster algorithm like Dijkstra's or A* can be used, but let's assume that's not agiven.
@@ -89,14 +91,18 @@ def hamiltonian_cycle_check(adj_matrix):
 path = hamiltonian_cycle_check(adj_edges)
 
 if path[0] == -1:
-    print("Hamiltonian Cycle DNE. Finding disjoint cycles instead...")
+    print("Hamiltonian Cycle of Size N DNE. Need to find disjoint Cycles instead...")
 else:
-    for v in path:
-        try:
-            print(name_index[v]+" DREW "+ name_index[v+1])
-        except:
-            print(name_index[v]+" DREW "+ name_index[0])
+    print(path)
 
-## 4) If DFS proves our graph is non-Hamiltonian, we will instead
+    for i in range(len(path)):
+        giver
+        try:
+            print(name_index[path[i]]+" DREW "+ name_index[path[i+1]])
+        except:
+            print(name_index[path[i]]+" DREW "+ name_index[path[0]])
+
+## 4) If DFS proves our graph is non-Hamiltonian, we will remove the sub-n length Hamiltonian Cycle 
+## we just found from consideration, and attempt to make a another Hamiltonian Cycle from the remaining nodes. 
 if path[0] == -1:
-    pass ## TODO !!!!
+    pass ## TODO

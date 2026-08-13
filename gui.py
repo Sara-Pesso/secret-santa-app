@@ -101,7 +101,7 @@ exclusions_name1_box.pack(side="left", fill="x")
 row_frame2 = tk.Frame(root)
 row_frame2.pack(fill="x", padx=10, pady=10)
 
-exclusions_label = tk.Label(row_frame2, text="Gift Giver Name:")
+exclusions_label = tk.Label(row_frame2, text="Exclude:")
 exclusions_label.pack(side="left", padx=(0, 10))
 
 exclusions_name2_box = tk.Entry(row_frame2, width=30)

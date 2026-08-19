@@ -39,8 +39,7 @@ print(name_index)
 
 ## 1) Check if graph is Hamiltonian using Depth First Search (Backtracking Method)
 ## NOTE: If we know the graph is Hamiltonian (i.e., no exclusions at all), we have the Traveling
-## Salesman Problem (TSP). If this is the case, DFS isn't necessary (as it is O(n!) and very slow) and
-## a faster algorithm like Dijkstra's or A* can be used, but let's assume that's not agiven.
+## Salesman Problem (TSP). If this is the case, DFS isn't necessary (as it is O(n!) and very slow)
 def isSafe(vertex, adjMat, path, pos):
 
     # The vertex must be adjacent to the previous vertex
@@ -86,7 +85,7 @@ def hamiltonian_cycle_check(adj_matrix):
         return [-1]
     return path
 
-### This actually runs the DSF on our graph
+### This actually runs the DFS on our graph
 
 path = hamiltonian_cycle_check(adj_edges)
 
